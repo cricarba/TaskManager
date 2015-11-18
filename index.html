@@ -1,0 +1,159 @@
+<html>
+<header>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <style>
+    body {
+        padding: 23px 23px 0;
+        background: #000;
+        color: #ccc;
+        font: 12px/1.2 Menlo, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        -webkit-transition: height .4s;
+        transition: height .4s;
+    }
+
+    textarea, input {
+        border-color: #00ff00;
+        background-color: #000;
+        color: #00ff00;
+        width: 50%;
+        height: 50px;
+    }
+
+
+
+    li {
+        list-style: none;
+    }
+
+    .taskCard {
+        border: #00ff00 1px solid;
+        background-color: #000;
+        color: #ccc;
+        width: 100%;
+        height: 70px;
+        padding: 5px;
+    }
+
+    .taskCardDone {
+        border: #48D1CC 1px solid;
+        background-color: #000;
+        color: #ccc;
+        width: 100%;
+        height: 70px;
+        padding: 5px;
+    }
+
+
+    </style>   
+</header>
+<body>
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12"> 
+            Task Manager [Version 0.1]
+            <br />
+            Copyrigth (c) 2015 @Cricarba. All rigths reserved
+            <br />
+            <br />
+            <br />
+            <textarea id="task" placeholder="New Task"></textarea>
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3"> 
+          C:\\Task\Cristian.Carvajal\ToDo
+           <br />
+            <br />
+          <ul id="list"></ul>
+      </div>
+      <div class="col-md-3"> 
+          C:\\Task\Cristian.Carvajal\Done
+          <br />
+           <br />
+          <ul id="listDone"></ul>
+      </div>
+      <div class="col-md-6"> 
+
+      </div>
+  </div>
+
+</div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+$(document).ready(function () {
+    PaintTask();
+    $("#task").focus();
+    $('#task').keypress(function (e) {
+        var key = e.which;
+        if (key === 13) {
+            var taskDescription = $("#task").val();
+            var count = localStorage.getItem("Count");
+            if (count > 0)
+                count++;
+            else
+                count = 1;
+
+            $("#list").append(GetTempalte(count, taskDescription));
+            localStorage.setItem("Count", count);
+            localStorage.setItem(count, taskDescription);
+            $("#task").focus();
+            $("#task").val("");
+        }
+    });
+});
+
+function Remove(objectRemove) {
+    var taskDescription = localStorage.getItem(objectRemove.id);
+    localStorage.setItem(objectRemove.id + "DONE", taskDescription);
+    localStorage.removeItem(objectRemove.id);
+    $(objectRemove).remove();
+    PaintTask();
+}
+
+function DefinitelyRemove(objectRemove) {
+    localStorage.removeItem(objectRemove.id + "DONE");
+    $(objectRemove).remove();
+    PaintTask();
+}
+
+var GetTempalte = function (count, taskDescription) {
+    return "<li>" +
+    "<div class='taskCard' ondblclick='Remove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t - " +
+    taskDescription + "</li>" + "</div></br>";
+
+}
+
+var GetTempalteDone = function (count, taskDescription) {
+    return "<li>" +
+    "<div class='taskCardDone' ondblclick='DefinitelyRemove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t -d - " +
+    taskDescription + "</li>" + "</div></br>";
+
+}
+var PaintTask = function () {
+    $("#list").html("</li>");
+    $("#listDone").html("</li>");
+    var maxCount = localStorage.getItem("Count");
+    for (count = 1; count <= maxCount; count++) {
+        var taskDescription = localStorage.getItem(count);
+        if (taskDescription !== null) {
+            $("#list").append(GetTempalte(count, taskDescription));
+        }
+
+        taskDescription = localStorage.getItem(count + "DONE");
+        if (taskDescription !== null) {
+            $("#listDone").append(GetTempalteDone(count, taskDescription));
+        }
+    }
+
+
+}
+</script>
+</html>
