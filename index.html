@@ -12,16 +12,31 @@
         transition: height .4s;
     }
 
-    textarea, input {
+    textarea {
         border-color: #00ff00;
         background-color: #000;
         color: #00ff00;
         width: 50%;
         height: 50px;
     }
+    
+   .InputDone{
+        border: 1px #00ff00;
+        background-color: #000;
+        color: #fff;
+        border-style: solid;
+       border-bottom:  none;          
+   }
 
 
-
+  .InputDelete{
+        border: 1px #48D1CC;
+        background-color: #000;
+        color: #fff;
+        border-style: solid;
+       border-bottom:  none;          
+   }
+   
     li {
         list-style: none;
     }
@@ -125,14 +140,14 @@ function DefinitelyRemove(objectRemove) {
 }
 
 var GetTempalte = function (count, taskDescription) {
-    return "<li>" +
+    return "<li><input class='InputDone' value='Done' type='button' onclick='Remove(this)' id='" + count + "'/>" +
     "<div class='taskCard' ondblclick='Remove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t - " +
     taskDescription + "</li>" + "</div></br>";
 
 }
 
 var GetTempalteDone = function (count, taskDescription) {
-    return "<li>" +
+    return "<li><input class='InputDelete' value='Del' type='button' onclick='DefinitelyRemove(this)' id='" + count + "'/>" +
     "<div class='taskCardDone' ondblclick='DefinitelyRemove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t -d - " +
     taskDescription + "</li>" + "</div></br>";
 
