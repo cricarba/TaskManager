@@ -1,0 +1,13 @@
+   <widget id="taski.com" version="0.1">
+        <name>Taski</name>
+        <description>
+            A sample task manager
+        </description>
+        <author email="cristian.carvajal@live.com" href="http://twitter.com/cricarba">
+            Taski Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+		<icon src="icon.png" />
+        <preference name="Fullscreen" value="false" />
+    </widget>

@@ -2,6 +2,14 @@
 <header>
     <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <script>
+        function Close(list){
+           if($("#"+ list).is(":visible"))
+                $("#"+ list).hide();
+                else
+                   $("#"+ list).show();
+}
+        </script>
     <style>
     body {
         padding: 23px 23px 0;
@@ -16,7 +24,7 @@
         border-color: #00ff00;
         background-color: #000;
         color: #00ff00;
-        width: 50%;
+        width: 100%;
         height: 50px;
     }
     
@@ -81,12 +89,14 @@
 <div class="container">
     <div class="row">
       <div class="col-md-3"> 
-          C:\\Task\Cristian.Carvajal\ToDo
+          <input  value='x' type='button' onclick='Close("list");'/>
+          C:\\Task\Cristian.Carvajal\To Do 
            <br />
             <br />
           <ul id="list"></ul>
       </div>
       <div class="col-md-3"> 
+           <input  value='x' type='button' onclick='Close("listDone");'/>
           C:\\Task\Cristian.Carvajal\Done
           <br />
            <br />
@@ -117,8 +127,10 @@ $(document).ready(function () {
                 count = 1;
 
             $("#list").append(GetTempalte(count, taskDescription));
-            localStorage.setItem("Count", count);
+            //var task = { 'Board': 1, 'Task': taskDescription };  
+            //localStorage.setItem('testObject', JSON.stringify(task));            
             localStorage.setItem(count, taskDescription);
+            localStorage.setItem("Count", count);
             $("#task").focus();
             $("#task").val("");
         }
@@ -141,14 +153,14 @@ function DefinitelyRemove(objectRemove) {
 
 var GetTempalte = function (count, taskDescription) {
     return "<li><input class='InputDone' value='Done' type='button' onclick='Remove(this)' id='" + count + "'/>" +
-    "<div class='taskCard' ondblclick='Remove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t - " +
+    "<div class='taskCard' ondblclick='Remove(this)' id='" + count + "'> 10.10.0." + count + "</br></br> -t - " +
     taskDescription + "</li>" + "</div></br>";
 
 }
 
 var GetTempalteDone = function (count, taskDescription) {
     return "<li><input class='InputDelete' value='Del' type='button' onclick='DefinitelyRemove(this)' id='" + count + "'/>" +
-    "<div class='taskCardDone' ondblclick='DefinitelyRemove(this)' id='" + count + "'> C:\\Task\\Cristian.Carvajal</br></br>10.10.0." + count + " -t -d - " +
+    "<div class='taskCardDone' ondblclick='DefinitelyRemove(this)' id='" + count + "'> 10.10.0." + count + "</br></br> -t -d - " +
     taskDescription + "</li>" + "</div></br>";
 
 }
