@@ -11,163 +11,238 @@
 }
         </script>
     <style>
-    body {
-        padding: 23px 23px 0;
-        background: #000;
-        color: #ccc;
-        font: 12px/1.2 Menlo, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-        -webkit-transition: height .4s;
-        transition: height .4s;
-    }
+      
 
-    textarea {
-        border-color: #00ff00;
-        background-color: #000;
-        color: #00ff00;
-        width: 100%;
-        height: 50px;
-    }
-    
-   .InputDone{
-        border: 1px #00ff00;
-        background-color: #000;
-        color: #fff;
-        border-style: solid;
-       border-bottom:  none;          
-   }
+    .box {
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+}
+.box-icon {
+    background-color: #57a544;
+    border-radius: 50%;
+    display: table;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+    margin-top: -61px;
+}
+.box-icon span {
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.info h4 {
+    font-size: 26px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.info > p {
+    color: #717171;
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: justify;
+}
+.info > a {
+    background-color: #03a9f4;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+.info > a:hover {
+    background-color: #0288d1;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+.error-notice {
+  margin: 5px 5px; /* Making sure to keep some distance from all side */
+}
 
+.oaerror {
+  width: 90%; /* Configure it fit in your design  */
+  margin: 0 auto; /* Centering Stuff */
+  background-color: #FFFFFF; /* Default background */
+  padding: 20px;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
 
-  .InputDelete{
-        border: 1px #48D1CC;
-        background-color: #000;
-        color: #fff;
-        border-style: solid;
-       border-bottom:  none;          
-   }
-   
-    li {
-        list-style: none;
-    }
+.danger {
+  border-left-color: #d9534f; /* Left side border color */
+  background-color: rgba(217, 83, 79, 0.1); /* Same color as the left border with reduced alpha to 0.1 */
+}
 
-    .taskCard {
-        border: #00ff00 1px solid;
-        background-color: #000;
-        color: #ccc;
-        width: 100%;
-        height: 70px;
-        padding: 5px;
-    }
+.danger strong {
+  color:  #d9534f;
+}
 
-    .taskCardDone {
-        border: #48D1CC 1px solid;
-        background-color: #000;
-        color: #ccc;
-        width: 100%;
-        height: 70px;
-        padding: 5px;
-    }
+.warning {
+  border-left-color: #f0ad4e;
+  background-color: rgba(240, 173, 78, 0.1);
+}
 
+.warning strong {
+  color: #f0ad4e;
+}
+
+.info {
+  border-left-color: #5bc0de;
+  background-color: rgba(91, 192, 222, 0.1);
+}
+
+.info strong {
+  color: #5bc0de;
+}
+
+.success {
+  border-left-color: #2b542c;
+  background-color: rgba(43, 84, 44, 0.1);
+}
+
+.success strong {
+  color: #2b542c;
+}
 
     </style>   
 </header>
 <body>
+    
    <div class="container">
     <div class="row">
-        <div class="col-md-12"> 
-            Task Manager [Version 0.1]
-            <br />
-            Copyrigth (c) 2015 @Cricarba. All rigths reserved
-            <br />
-            <br />
-            <br />
-            <textarea id="task" placeholder="New Task"></textarea>
-            <br />
-            <br />
+           <div class="col-md-12 ">
+            <div class="box">
+                <div class="box-icon">
+                    <span>T</span>
+                </div>
+                <div>
+                    <h4 class="text-center">Task Manager </h4>                  
+                  
+                </div>
+            </div>
+        </div>
+          </div>
+        <div class="row">
+       <div class="col-ms-12 ">
+       
+                      <div class="well">
+                          <form id="loginForm" m   novalidate="novalidate">
+                              <div class="form-group">
+                                  <label for="task" class="control-label">Task</label>
+                                  <input type="text" class="form-control" id="task" name="task" value="" required="" title="Please enter you task" placeholder="Please enter you task">
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                 <label for="cost" class="control-label">Cost</label>
+                                  <input type="number" class="form-control" id="cost" name="cost" value="" required="" title="Please enter you cost" placeholder="Please enter you cost">
+                                  <span class="help-block"></span>
+                              </div>
+                          </form>
+                      </div>
+  
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-      <div class="col-md-3"> 
-          <input  value='x' type='button' onclick='Close("list");'/>
-          C:\\Task\Cristian.Carvajal\To Do 
-           <br />
-            <br />
-          <ul id="list"></ul>
-      </div>
-      <div class="col-md-3"> 
-           <input  value='x' type='button' onclick='Close("listDone");'/>
-          C:\\Task\Cristian.Carvajal\Done
-          <br />
-           <br />
-          <ul id="listDone"></ul>
-      </div>
-      <div class="col-md-6"> 
-
-      </div>
-  </div>
-
-</div>
-</div>
-
-
+   
+        <div class="container">   
+            <div class="row"  >      
+		         <h2 id="Total" class="text-center ">
+                    <span class="info"> $ 0</span> </h4>      
+            </div>         
+          <div class="row" id="list">      
+		        
+            </div>       
+        
+        </div>
+      <div class="container">            
+          <div class="row" id="listDone">      
+		        
+            </div>             
+      </div>  
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
     PaintTask();
     $("#task").focus();
-    $('#task').keypress(function (e) {
+    $('#cost').keypress(function (e) {
         var key = e.which;
         if (key === 13) {
             var taskDescription = $("#task").val();
+            var taskCost = $("#cost").val();
             var count = localStorage.getItem("Count");
+            var actual = localStorage.getItem("Total");
+             if(actual == null)
+              actual = 0;
             if (count > 0)
                 count++;
             else
                 count = 1;
-
-            $("#list").append(GetTempalte(count, taskDescription));
-            //var task = { 'Board': 1, 'Task': taskDescription };  
-            //localStorage.setItem('testObject', JSON.stringify(task));            
-            localStorage.setItem(count, taskDescription);
-            localStorage.setItem("Count", count);
+          
+            var task = { 'Id': count,'Cost': taskCost, 'Task': taskDescription };   
+            localStorage.setItem(count,  JSON.stringify(task));
+            localStorage.setItem("Count", count);  
+            var total = parseInt(actual) + parseInt(taskCost) ;
+            localStorage.setItem("Total",total );
             $("#task").focus();
             $("#task").val("");
+            $("#cost").val("");
+             $("#Total").text("$" + total);
+            PaintTask();
         }
     });
 });
 
 function Remove(objectRemove) {
     var taskDescription = localStorage.getItem(objectRemove.id);
+    var tasky = JSON.parse(taskDescription)
+    
+    var actual = localStorage.getItem("Total");
+    var total = parseInt(actual) - parseInt(tasky.Cost) ;
+    localStorage.setItem("Total",total );
+ 
+      $("#Total").text("$" + total);
     localStorage.setItem(objectRemove.id + "DONE", taskDescription);
     localStorage.removeItem(objectRemove.id);
     $(objectRemove).remove();
     PaintTask();
 }
 
-function DefinitelyRemove(objectRemove) {
+function DefinitelyRemove(objectRemove) {  
     localStorage.removeItem(objectRemove.id + "DONE");
     $(objectRemove).remove();
     PaintTask();
 }
 
 var GetTempalte = function (count, taskDescription) {
-    return "<li><input class='InputDone' value='Done' type='button' onclick='Remove(this)' id='" + count + "'/>" +
-    "<div class='taskCard' ondblclick='Remove(this)' id='" + count + "'> 10.10.0." + count + "</br></br> -t - " +
-    taskDescription + "</li>" + "</div></br>";
+    var tasky = JSON.parse(taskDescription)
+    return   "<div class='error-notice' onclick='Remove(this)' id='" + count + "'>  "+
+              "<div class='oaerror danger'>"+
+              "  <strong>"+tasky.Task+"</strong> - $ " +tasky.Cost +"</div></div>";  
 
 }
 
 var GetTempalteDone = function (count, taskDescription) {
-    return "<li><input class='InputDelete' value='Del' type='button' onclick='DefinitelyRemove(this)' id='" + count + "'/>" +
-    "<div class='taskCardDone' ondblclick='DefinitelyRemove(this)' id='" + count + "'> 10.10.0." + count + "</br></br> -t -d - " +
-    taskDescription + "</li>" + "</div></br>";
+    var tasky = JSON.parse(taskDescription)
+    return   "<div class='error-notice' onclick='DefinitelyRemove(this)' id='" + count + "'>  "+
+              "<div class='oaerror success'>"+
+              "  <strong>"+tasky.Task+"</strong> - $ " +tasky.Cost +"</div></div>";     
+   
 
 }
 var PaintTask = function () {
-    $("#list").html("</li>");
-    $("#listDone").html("</li>");
+    $("#list").html("</div>");
+    $("#listDone").html("</div>");
     var maxCount = localStorage.getItem("Count");
+  
     for (count = 1; count <= maxCount; count++) {
         var taskDescription = localStorage.getItem(count);
         if (taskDescription !== null) {
@@ -179,7 +254,8 @@ var PaintTask = function () {
             $("#listDone").append(GetTempalteDone(count, taskDescription));
         }
     }
-
+   var actual = localStorage.getItem("Total"); 
+  $("#Total").text("$" + actual);
 
 }
 </script>
