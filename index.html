@@ -146,6 +146,10 @@
                                   <input type="number" class="form-control" id="cost" name="cost" value="" required="" title="Please enter you cost" placeholder="Please enter you cost">
                                   <span class="help-block"></span>
                               </div>
+                               <div class="form-group text-center">
+                                <button type="button" class="btn btn-success" id="save">Save</button>                      
+                                   
+                              </div>
                           </form>
                       </div>
   
@@ -155,7 +159,7 @@
    
         <div class="container">   
             <div class="row"  >      
-		         <h2 id="Total" class="text-center ">
+		         <h2 id="Total" class="text-center">
                     <span class="info"> $ 0</span> </h4>      
             </div>         
           <div class="row" id="list">      
@@ -173,6 +177,29 @@
 $(document).ready(function () {
     PaintTask();
     $("#task").focus();
+    $("#save").click(function(){
+        var taskDescription = $("#task").val();
+            var taskCost = $("#cost").val();
+            var count = localStorage.getItem("Count");
+            var actual = localStorage.getItem("Total");
+             if(actual == null)
+              actual = 0;
+            if (count > 0)
+                count++;
+            else
+                count = 1;
+          
+            var task = { 'Id': count,'Cost': taskCost, 'Task': taskDescription };   
+            localStorage.setItem(count,  JSON.stringify(task));
+            localStorage.setItem("Count", count);  
+            var total = parseInt(actual) + parseInt(taskCost) ;
+            localStorage.setItem("Total",total );
+            $("#task").focus();
+            $("#task").val("");
+            $("#cost").val("");
+             $("#Total").text("$" + total);
+            PaintTask();
+    });
     $('#cost').keypress(function (e) {
         var key = e.which;
         if (key === 13) {
